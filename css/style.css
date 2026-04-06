@@ -10724,8 +10724,8 @@ textarea.form-control {
 .theme-toggle-switch {
   position: relative;
   display: inline-block;
-  width: 64px;
-  height: 34px;
+  width: 56px;
+  height: 30px;
   margin-bottom: 0;
   cursor: pointer;
 }
@@ -10743,7 +10743,7 @@ textarea.form-control {
   right: 0;
   bottom: 0;
   background: transparent;
-  border: 4px solid #4a4a4a;
+  border: 3px solid #4a4a4a;
   border-radius: 50px;
   transition: all 0.4s ease;
   box-sizing: border-box;
@@ -10752,127 +10752,50 @@ textarea.form-control {
 .theme-toggle-slider:before {
   content: "";
   position: absolute;
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   top: 4px;
-  right: 6px;
+  right: 5px;
   background: #ffffff;
-  border: 5px solid #1976d2;
+  border: 4px solid #1976d2;
   border-radius: 50%;
   transition: all 0.4s ease;
   box-sizing: border-box;
 }
 
 .theme-toggle-switch input:checked + .theme-toggle-slider:before {
-  transform: translateX(-30px);
+  transform: translateX(-26px);
 }
 
 .theme-toggle-switch input:focus + .theme-toggle-slider {
   box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
 }
 
-/* Navbar alignment for desktop */
 @media (min-width: 992px) {
-  .navbar-nav {
+  #ftco-nav .navbar-nav {
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  #ftco-nav .navbar-nav .nav-item {
     display: flex;
     align-items: center;
   }
 
-  .nav-toggle-item {
-    margin-left: 22px;
+  #ftco-nav .nav-toggle-item {
+    margin-left: auto !important;
+    padding-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
   }
 }
 
-/* Better mobile spacing */
 @media (max-width: 991px) {
   .nav-toggle-item {
     margin-top: 12px;
     margin-left: 0;
     justify-content: flex-start;
   }
-}
-
-/* =========================
-   Light Mode Styling
-   ========================= */
-
-body.light-mode {
-  background: #ffffff;
-  color: #000000;
-}
-
-body.light-mode .navbar,
-body.light-mode .ftco_navbar,
-body.light-mode .ftco-navbar-light {
-  background: #ffffff !important;
-}
-
-body.light-mode .navbar-brand,
-body.light-mode .nav-link,
-body.light-mode h1,
-body.light-mode h2,
-body.light-mode h3,
-body.light-mode h4,
-body.light-mode h5,
-body.light-mode h6,
-body.light-mode p,
-body.light-mode li,
-body.light-mode span,
-body.light-mode a {
-  color: #111 !important;
-}
-
-body.light-mode .hero .overlay,
-body.light-mode .slider-item .overlay {
-  background: rgba(255,255,255,0.2);
-}
-
-body.light-mode .swiper-slide,
-body.light-mode .resume-wrap,
-body.light-mode .blog-entry,
-body.light-mode .box,
-body.light-mode .img-about .overlay {
-  background: #f8f9fa !important;
-  color: #111 !important;
-}
-
-body.light-mode .btn-outline-light {
-  border: 1px solid #111;
-  color: #111;
-}
-
-body.light-mode .btn-outline-light:hover {
-  background: #111;
-  color: #fff;
-}
-
-body.light-mode .theme-toggle-slider {
-  border-color: #4a4a4a;
-}
-
-body.light-mode .theme-toggle-slider:before {
-  background: #ffffff;
-  border-color: #1976d2;
-}
-
-/* Optional smoother transitions */
-body,
-.navbar,
-.ftco_navbar,
-.ftco-navbar-light,
-.resume-wrap,
-.blog-entry,
-.box,
-.swiper-slide,
-a,
-p,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-span,
-li {
-  transition: all 0.3s ease;
 }
