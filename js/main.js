@@ -54,9 +54,9 @@ AOS.init({
       if (this.hostname && this.hostname !== window.location.hostname) {
         return;
       }
-     
+
       var hash = this.hash;
-      if (hash) {
+      if (hash && $(hash).length) {
         event.preventDefault();
         $('html, body').animate({
           scrollTop: $(hash).offset().top - 70
@@ -152,6 +152,7 @@ AOS.init({
             numberStep: comma_separator_number_step
           }, 7000);
         });
+        $(this.element).addClass('ftco-animated');
       }
     }, { offset: '95%' });
   };
@@ -218,18 +219,20 @@ AOS.init({
     fixedContentPos: false
   });
 
-  // Swiper slider initialization
-  var swiper = new Swiper('.testimonials-slider', {
-    loop: true,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    }
-  });
+  // Testimonials Swiper slider initialization
+  if ($('.testimonials-slider').length) {
+    var swiper = new Swiper('.testimonials-slider', {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: '.swiper-pagination',
+        clickable: true,
+      }
+    });
+  }
 
   // Make sure external links open normally
   $(document).on('click', 'a[href^="http"]', function(e) {
@@ -295,7 +298,6 @@ AOS.init({
       });
     }
 
-    // Initialize Badges Swiper
     if ($('.badges-swiper').length) {
       badgesSwiper = new Swiper('.badges-swiper', {
         effect: 'coverflow',
@@ -353,15 +355,15 @@ AOS.init({
       var filter = $(this).data('filter');
       $('.certificate-filter-btn').removeClass('active');
       $(this).addClass('active');
-     
+
       if (filter === 'all') {
         $('.certificate-item').show();
       } else {
         $('.certificate-item').hide();
         $('.certificate-item[data-category="' + filter + '"]').show();
       }
-     
-      if (typeof certSwiper !== 'undefined') {
+
+      if (typeof certSwiper !== 'undefined' && certSwiper) {
         setTimeout(function() {
           certSwiper.update();
         }, 100);
@@ -407,6 +409,25 @@ AOS.init({
         duration: 300
       }
     });
+
+    $('.view-btn').off('click').on('click', function(e) {
+      e.preventDefault();
+      var imgSrc = $(this).attr('data-img');
+      if (imgSrc) {
+        $('#modalImage').attr('src', imgSrc);
+        $('#imageModal').fadeIn();
+      }
+    });
+
+    $('.close').off('click').on('click', function() {
+      $('#imageModal').fadeOut();
+    });
+
+    $('#imageModal').off('click').on('click', function(e) {
+      if ($(e.target).is('#imageModal')) {
+        $('#imageModal').fadeOut();
+      }
+    });
   };
 
   var initCertificateDownloads = function() {
@@ -423,30 +444,28 @@ AOS.init({
     $('.certificate-toggle-btn').on('click', function(e) {
       e.preventDefault();
       var target = $(this).data('target');
-      
-      // Update active button
+
       $('.certificate-toggle-btn').removeClass('active');
       $(this).addClass('active');
-      
-      // Toggle content visibility
+
       if (target === 'certificates') {
         $('.certificates-content').addClass('active').show();
         $('.badges-content').removeClass('active').hide();
-        
-        if (typeof certSwiper !== 'undefined') {
+
+        if (typeof certSwiper !== 'undefined' && certSwiper) {
           setTimeout(function() {
             certSwiper.update();
-            certSwiper.slideTo(0, 0);
+            certSwiper.slideToLoop(0, 0);
           }, 10);
         }
       } else {
         $('.certificates-content').removeClass('active').hide();
         $('.badges-content').addClass('active').show();
-        
-        if (typeof badgesSwiper !== 'undefined') {
+
+        if (typeof badgesSwiper !== 'undefined' && badgesSwiper) {
           setTimeout(function() {
             badgesSwiper.update();
-            badgesSwiper.slideTo(0, 0);
+            badgesSwiper.slideToLoop(0, 0);
           }, 10);
         }
       }
@@ -461,12 +480,11 @@ AOS.init({
       initCertificateModal();
       initCertificateDownloads();
       initCertificateToggle();
-     
-      // Set initial state
+
       $('.certificates-content').addClass('active').show();
       $('.badges-content').removeClass('active').hide();
       $('.certificate-toggle-btn[data-target="certificates"]').addClass('active');
-     
+
       $('#certificate-section').waypoint(function(direction) {
         if (direction === 'down') {
           $('.certificate-item, .badge-item').addClass('animate__animated animate__fadeInUp');
@@ -475,9 +493,32 @@ AOS.init({
     }
   };
 
-  // Initialize certificate section
+  // Theme Toggle Functionality
+  var initThemeToggle = function() {
+    var themeToggle = document.getElementById('theme-toggle');
+
+    if (themeToggle) {
+      if (localStorage.getItem('theme') === 'light') {
+        document.body.classList.add('light-mode');
+        themeToggle.checked = true;
+      }
+
+      themeToggle.addEventListener('change', function() {
+        if (this.checked) {
+          document.body.classList.add('light-mode');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.body.classList.remove('light-mode');
+          localStorage.setItem('theme', 'dark');
+        }
+      });
+    }
+  };
+
+  // Initialize all on document ready
   $(document).ready(function() {
     initCertificateSection();
+    initThemeToggle();
   });
 
 })(jQuery);
