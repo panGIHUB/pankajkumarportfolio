@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -243,26 +244,130 @@
   color: #000;
 }
 
-.theme-toggle-btn {
-  margin-left: 15px;
-  border: 1px solid #ffbd39;
-  color: #ffbd39;
-  background: transparent;
+/* =========================
+   Professional Navbar Toggle Switch
+   ========================= */
+
+.nav-toggle-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 18px;
 }
 
-.theme-toggle-btn:hover {
-  background: #ffbd39;
-  color: #000;
+.theme-toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 64px;
+  height: 34px;
+  margin-bottom: 0;
+  cursor: pointer;
 }
+
+.theme-toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.theme-toggle-slider {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: transparent;
+  border: 4px solid #4a4a4a;
+  border-radius: 50px;
+  transition: all 0.4s ease;
+  box-sizing: border-box;
+}
+
+.theme-toggle-slider:before {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  top: 4px;
+  right: 6px;
+  background: #ffffff;
+  border: 5px solid #1976d2;
+  border-radius: 50%;
+  transition: all 0.4s ease;
+  box-sizing: border-box;
+}
+
+.theme-toggle-switch input:checked + .theme-toggle-slider:before {
+  transform: translateX(-30px);
+}
+
+.theme-toggle-switch input:focus + .theme-toggle-slider {
+  box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.15);
+}
+
+/* Navbar alignment for desktop */
+@media (min-width: 992px) {
+  .navbar-nav {
+    display: flex;
+    align-items: center;
+  }
+
+  .nav-toggle-item {
+    margin-left: 22px;
+  }
+}
+
+/* Better mobile spacing */
+@media (max-width: 991px) {
+  .nav-toggle-item {
+    margin-top: 12px;
+    margin-left: 0;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================
+   Light Mode Styling
+   ========================= */
 
 body.light-mode {
   background: #ffffff;
   color: #000000;
 }
 
-body.light-mode .swiper-slide {
-  background: #f8f9fa;
-  color: #000;
+body.light-mode .navbar,
+body.light-mode .ftco_navbar,
+body.light-mode .ftco-navbar-light {
+  background: #ffffff !important;
+}
+
+body.light-mode .navbar-brand,
+body.light-mode .nav-link,
+body.light-mode h1,
+body.light-mode h2,
+body.light-mode h3,
+body.light-mode h4,
+body.light-mode h5,
+body.light-mode h6,
+body.light-mode p,
+body.light-mode li,
+body.light-mode span,
+body.light-mode a {
+  color: #111 !important;
+}
+
+body.light-mode .hero .overlay,
+body.light-mode .slider-item .overlay {
+  background: rgba(255,255,255,0.2);
+}
+
+body.light-mode .swiper-slide,
+body.light-mode .resume-wrap,
+body.light-mode .blog-entry,
+body.light-mode .box,
+body.light-mode .img-about .overlay {
+  background: #f8f9fa !important;
+  color: #111 !important;
 }
 
 body.light-mode .modal {
@@ -270,13 +375,44 @@ body.light-mode .modal {
 }
 
 body.light-mode .btn-outline-light {
-  border: 1px solid #000;
-  color: #000;
+  border: 1px solid #111;
+  color: #111;
 }
 
 body.light-mode .btn-outline-light:hover {
-  background: #000;
+  background: #111;
   color: #fff;
+}
+
+body.light-mode .theme-toggle-slider {
+  border-color: #4a4a4a;
+}
+
+body.light-mode .theme-toggle-slider:before {
+  background: #ffffff;
+  border-color: #1976d2;
+}
+
+/* Optional smoother transitions */
+body,
+.navbar,
+.ftco_navbar,
+.ftco-navbar-light,
+.resume-wrap,
+.blog-entry,
+.box,
+.swiper-slide,
+a,
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+li {
+  transition: all 0.3s ease;
 }
 </style>
   </head>
@@ -299,19 +435,12 @@ body.light-mode .btn-outline-light:hover {
 	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
               <li class="nav-item"><a href="#github-stats-section" class="nav-link"><span>GitHub Stats</span></a></li>
 	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
-              <li class="nav-item d-flex align-items-center ml-lg-3">
-  
-				  
-		<li class="nav-item nav-theme-toggle">
-  <div class="theme-switch-wrapper">
-    <i class="fas fa-sun theme-icon"></i>
-    <label class="theme-switch" for="theme-toggle">
-      <input type="checkbox" id="theme-toggle">
-      <span class="slider round"></span>
-    </label>
-    <i class="fas fa-moon theme-icon"></i>
-  </div>
-</li>
+              <li class="nav-item nav-toggle-item">
+                <label class="theme-toggle-switch" for="theme-toggle">
+                  <input type="checkbox" id="theme-toggle">
+                  <span class="theme-toggle-slider"></span>
+                </label>
+              </li>
 			</ul>
 	      </div>
 	    </div>
@@ -1289,9 +1418,8 @@ body.light-mode .btn-outline-light:hover {
                 });
             });
         }
-
-        
     });
   </script>
 </body>
 </html>
+```
