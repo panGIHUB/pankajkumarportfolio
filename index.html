@@ -42,7 +42,6 @@
 }
 
 .skill-mf .progress {
-  /* background-color: #cde1f8; */
   margin: .5rem 0 1.2rem 0;
   border-radius: 0;
   height: .7rem;
@@ -53,7 +52,6 @@
   background-color: #ffbd39;
 }
 
-/* Animation styles */
 #typing-animation {
   position: relative;
   font-size: 30px;
@@ -61,38 +59,22 @@
   color: rgb(255, 255, 255);
   overflow: hidden;
   white-space: nowrap;
-  animation: typing 3s steps(20, end) infinite;
+  display: inline-block;
+  min-height: 40px;
 }
 
-#typing-animation:before {
-  content: "";
-  top: 0;
-  left: 0;
-  width: 0;
-  height: 100%;
-  background-color: #ccc;
-  animation: typing-cursor 0.5s ease-in-out infinite;
+#typing-animation:after {
+  content: "|";
+  animation: blink 0.7s infinite;
+  margin-left: 5px;
 }
 
-@keyframes typing {
-  from {
-    width: 0;
-  }
-  to {
-    width: 100%;
+@keyframes blink {
+  50% {
+    opacity: 0;
   }
 }
 
-@keyframes typing-cursor {
-  from {
-    width: 5px;
-  }
-  to {
-    width: 0;
-  }
-}
-
-/* project image zoom effect */
 .zoom-effect {
   overflow: hidden;
   transition: transform 0.3s ease-out;
@@ -113,6 +95,189 @@
 .ftco-footer-social li {
 	margin: 0 10px;
 }
+
+.btn-outline-light {
+  border: 1px solid #fff;
+  color: #fff;
+}
+
+.btn-outline-light:hover {
+  background: #fff;
+  color: #000;
+}
+
+.toggle-buttons .btn {
+  margin: 0 5px;
+}
+
+.certificates-content,
+.badges-content {
+  display: none;
+}
+
+.certificates-content.active,
+.badges-content.active {
+  display: block;
+}
+
+.swiper-container {
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background: #111;
+  border-radius: 10px;
+  overflow: hidden;
+  width: 300px;
+  height: auto;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+}
+
+.swiper-slide .details {
+  padding: 15px;
+}
+
+.view-btn {
+  background: #ffbd39;
+  color: #000;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.view-btn:hover {
+  background: #fff;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  padding-top: 50px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0,0,0,0.9);
+  text-align: center;
+}
+
+.modal img {
+  max-width: 90%;
+  max-height: 80vh;
+  margin-top: 20px;
+}
+
+.modal .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  background: #ffbd39;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.skills-list {
+  list-style: none;
+  padding-left: 0;
+  margin-top: 20px;
+}
+
+.skills-list li {
+  font-size: 16px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.skills-list li i {
+  color: #ffbd39;
+  font-size: 20px;
+  width: 24px;
+}
+
+.resume-wrap ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+.resume-wrap ul li {
+  margin-bottom: 8px;
+}
+
+.project-btn-group a {
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.github-stats-section img {
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.btn-outline-primary {
+  border: 1px solid #ffbd39;
+  color: #ffbd39;
+  background: transparent;
+}
+
+.btn-outline-primary:hover {
+  background: #ffbd39;
+  color: #000;
+}
+
+.theme-toggle-btn {
+  margin-left: 15px;
+  border: 1px solid #ffbd39;
+  color: #ffbd39;
+  background: transparent;
+}
+
+.theme-toggle-btn:hover {
+  background: #ffbd39;
+  color: #000;
+}
+
+body.light-mode {
+  background: #ffffff;
+  color: #000000;
+}
+
+body.light-mode .swiper-slide {
+  background: #f8f9fa;
+  color: #000;
+}
+
+body.light-mode .modal {
+  background: rgba(255,255,255,0.95);
+}
+
+body.light-mode .btn-outline-light {
+  border: 1px solid #000;
+  color: #000;
+}
+
+body.light-mode .btn-outline-light:hover {
+  background: #000;
+  color: #fff;
+}
 </style>
   </head>
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -129,9 +294,14 @@
 	          <li class="nav-item"><a href="#home-section" class="nav-link"><span>Home</span></a></li>
 	          <li class="nav-item"><a href="#about-section" class="nav-link"><span>About</span></a></li>
 	          <li class="nav-item"><a href="#resume-section" class="nav-link"><span>Resume</span></a></li>
+              <li class="nav-item"><a href="#experience-section" class="nav-link"><span>Experience</span></a></li>
 			  <li class="nav-item"><a href="#certificate-section" class="nav-link"><span>Certificate</span></a></li>
 	          <li class="nav-item"><a href="#project-section" class="nav-link"><span>Projects</span></a></li>
+              <li class="nav-item"><a href="#github-stats-section" class="nav-link"><span>GitHub Stats</span></a></li>
 	          <li class="nav-item"><a href="#contact-section" class="nav-link"><span>Contact</span></a></li>
+              <li class="nav-item">
+                <button id="theme-toggle" class="btn theme-toggle-btn">Dark/Light</button>
+              </li>
 			</ul>
 	      </div>
 	    </div>
@@ -149,49 +319,67 @@
 		          <div class="one-forth d-flex align-items-center ftco-animate" data-scrollax=" properties: { translateY: '70%' }">
 		          	<div class="text">
 		          		<span class="subheading">Hello!</span>
-			            <h1 class="mb-4 mt-3">I'm <span>Pankaj Kumar</span></h1>
+			            <h1 class="mb-4 mt-3">Hi, I'm <span>Pankaj Kumar</span></h1>
 
-						<!-- Element to contain animated typing -->
 						<span id="typing-animation"></span>
 
 						<script>
-						// Initialize the typing animation
 						const typingAnimationElement = document.getElementById('typing-animation');
 
-						// Create an array of typing text
 						const typingTexts = [
-						'Engineer  ',
-						'Electronics Engineer',
-						'Competitive Programming  ',
-						'Software Developer Engineer',
-					        'Front-End Web Developer',
-						'Data Scientist',
-							
+						  'Engineer',
+						  'Electronics Engineer',
+						  'Competitive Programming',
+						  'Software Developer Engineer',
+						  'Front-End Web Developer',
+						  'Data Scientist'
 						];
 
-						// Create a function to display the typing animation for a given text
-						function playTypingAnimation(text) {
-						// Loop through each character and add it to the element
-						for (let i = 0; i < text.length; i++) {
-							setTimeout(() => {
-							typingAnimationElement.textContent += text[i];
-							}, i * 200); // Increase the delay to slow down the typing animation
+						let textIndex = 0;
+						let charIndex = 0;
+						let isDeleting = false;
+
+						function typeEffect() {
+						  const currentText = typingTexts[textIndex];
+						  
+						  if (!isDeleting) {
+						    typingAnimationElement.textContent = currentText.substring(0, charIndex + 1);
+						    charIndex++;
+						    
+						    if (charIndex === currentText.length) {
+						      isDeleting = true;
+						      setTimeout(typeEffect, 1000);
+						      return;
+						    }
+						  } else {
+						    typingAnimationElement.textContent = currentText.substring(0, charIndex - 1);
+						    charIndex--;
+						    
+						    if (charIndex === 0) {
+						      isDeleting = false;
+						      textIndex = (textIndex + 1) % typingTexts.length;
+						    }
+						  }
+
+						  setTimeout(typeEffect, isDeleting ? 80 : 120);
 						}
 
-						// Once the animation is complete, reset the text and start over
-						setTimeout(() => {
-							typingAnimationElement.textContent = '';
-							playTypingAnimation(typingTexts[(typingTexts.indexOf(text) + 1) % typingTexts.length]);
-						}, text.length * 200);
-						}
-
-						// Start the typing animation loop
-						playTypingAnimation(typingTexts[0]);
+						typeEffect();
 						</script>
 
 						<br><br>
-			            <h2>An Electronic & Communication Engineer</h2>
-			            <p><a href="https://github.com/panGIHUB" class="btn btn-white btn-outline-white py-3 px-4">My works</a></p>
+
+						<h2 class="mb-3">Software Developer | ECE Engineer</h2>
+
+						<p class="mb-4">
+						  I build scalable web applications, solve complex problems using DSA,
+						  and explore data-driven solutions.
+						</p>
+
+						<div>
+						  <a href="https://github.com/panGIHUB" class="btn btn-primary mr-2">GitHub</a>
+						  <a href="images/Pankaj Kumar-CV.pdf" download class="btn btn-outline-light">Download CV</a>
+						</div>
 		            </div>
 		          </div>
 	        	</div>
@@ -213,7 +401,6 @@
 										<img src="images/about_me.png" class="img-fluid rounded b-shadow-a" alt="">
 									  </div>
 									</div>
-									<!-- Details next to profile image -->
 									<div class="col-sm-6 col-md-7">
 									  <div class="about-info">
 										<p><span class="title-s">Name: </span> <span>Pankaj Kumar</span></p>
@@ -224,54 +411,66 @@
 								  </div>
 
 								<div class="skill-mf">
-    <p class="title-s">Professional Skills</p>
+                                  <p class="title-s">Professional Skills</p>
 
-    <span>Python</span> <span class="pull-right">85%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>Python</span> <span class="pull-right">85%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>Data Structures & Algorithms (DSA)</span> <span class="pull-right">90%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>Data Structures & Algorithms (DSA)</span> <span class="pull-right">90%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 90%;" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>C++</span> <span class="pull-right">85%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>C++</span> <span class="pull-right">85%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 85%;" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>C</span> <span class="pull-right">80%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>C</span> <span class="pull-right">80%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>SQL / MySQL / DBMS</span> <span class="pull-right">80%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>SQL / MySQL / DBMS</span> <span class="pull-right">80%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>HTML / CSS / JavaScript</span> <span class="pull-right">80%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>HTML / CSS / JavaScript</span> <span class="pull-right">80%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 80%;" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>Web Frameworks (React.js, Tailwind CSS)</span> <span class="pull-right">75%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>Web Frameworks (React.js, Tailwind CSS)</span> <span class="pull-right">75%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>Version Control (Git & GitHub)</span> <span class="pull-right">75%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
+                                  <span>Version Control (Git & GitHub)</span> <span class="pull-right">75%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
-    <span>Data Science (Pandas, NumPy, Matplotlib, Scikit-learn)</span> <span class="pull-right">70%</span>
-    <div class="progress">
-        <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-</div>
+                                  <span>Data Science (Pandas, NumPy, Matplotlib, Scikit-learn)</span> <span class="pull-right">70%</span>
+                                  <div class="progress">
+                                      <div class="progress-bar" role="progressbar" style="width: 70%;" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                  </div>
 
+                                  <h4>Technical Skills</h4>
+
+                                  <ul class="skills-list">
+                                    <li><i class="fab fa-python"></i> Python</li>
+                                    <li><i class="fas fa-code"></i> Data Structures & Algorithms</li>
+                                    <li><i class="fab fa-js"></i> JavaScript</li>
+                                    <li><i class="fab fa-react"></i> React.js</li>
+                                    <li><i class="fas fa-database"></i> MySQL</li>
+                                  </ul>
+                                </div>
+							</div>
+						</div>
+					</div>
 					
 					<div class="col-md-6 col-lg-7 pl-lg-5 pb-5">
 						<div class="row justify-content-start pb-3">
@@ -279,33 +478,21 @@
 								<h1 class="big">About</h1>
 								<h2 class="mb-4">About Me</h2>
 								
-								<p>I am a recent B.Tech graduate in Electronics and Communication Engineering from NIT Srinagar. 
-									Alongside a strong academic foundation in electronics, signal processing, and communication systems,
-									I have developed solid skills in software development, front-end web technologies, and data science. 
-									I am proficient in HTML, CSS, JavaScript, and Python, and have built projects such as a Currency Converter 
-									and several interactive web applications. Additionally, I am exploring data analysis, machine learning, and
-									data visualization using Python libraries like Pandas, NumPy, and Matplotlib. Passionate about continuous learning, 
-									I aim to combine my engineering background with modern software and data-driven technologies to solve real-world 
-									problems and build impactful digital solutions..</p>
-
-								
+								<p>I am a recent B.Tech graduate in Electronics and Communication Engineering from NIT Srinagar. Alongside a strong academic foundation in electronics, signal processing, and communication systems, I have developed solid skills in software development, front-end web technologies, and data science. I am proficient in HTML, CSS, JavaScript, and Python, and have built projects such as a Currency Converter and several interactive web applications. Additionally, I am exploring data analysis, machine learning, and data visualization using Python libraries like Pandas, NumPy, and Matplotlib. Passionate about continuous learning, I aim to combine my engineering background with modern software and data-driven technologies to solve real-world problems and build impactful digital solutions.</p>
 								<ul class="about-info mt-4 px-md-0 px-2">
 									<li class="d-flex"><span>Profile:</span> <span>Electronics and Communication Engineer</span></li>
-<li class="d-flex"><span>Profile:</span> <span>Electronics and Communication Engineer</span></li>
 <li class="d-flex"><span>Domains:</span> <span>Front-End Development, Software Engineering, Data Science</span></li>
 <li class="d-flex"><span>Education:</span> <span>Bachelor of Technology (B.Tech), NIT Srinagar</span></li>
 <li class="d-flex"><span>Programming Languages:</span> <span>HTML, CSS, JavaScript, Python, C, C++</span></li>
 <li class="d-flex"><span>Web Development Skills:</span> <span>Responsive Design, DOM Manipulation, API Integration</span></li>
 <li class="d-flex"><span>Frameworks & Libraries:</span> <span>React.js, Tailwind CSS, Bootstrap, Pandas, NumPy, Matplotlib, Scikit-learn</span></li>
 <li class="d-flex"><span>Databases:</span> <span>MySQL, DBMS</span></li>
-<li class="d-flex"><span>Tools & Platforms:</span> <span>VS Code, Jupyter Notebook, MySQL Workbench, LTspice, Quartus Prime</span></li>
+<li class="d-flex"><span>Tools & Platforms:</span> <span>VS Code, Jupyter Notebook, MySQL Workbench, LTspice, Quartus Prime, Git, GitHub</span></li>
 <li class="d-flex"><span>Technical Skills:</span> <span>Data Structures & Algorithms (DSA), Signal Processing, Circuit Design, Microprocessors, VHDL</span></li>
 <li class="d-flex"><span>Soft Skills:</span> <span>Teamwork, Leadership, Communication, Creativity, Project Management</span></li>
 <li class="d-flex"><span>Productivity Tools:</span> <span>Microsoft Excel, PowerPoint, Word</span></li>
 <li class="d-flex"><span>Languages Known:</span> <span>English, Hindi</span></li>
 <li class="d-flex"><span>Interests:</span> <span>Cricket, Traveling, Problem Solving, Tech Innovation</span></li>
-
-
 								</ul>
 							</div>
 						</div>
@@ -328,61 +515,63 @@
     <section class="ftco-section ftco-no-pb" id="resume-section">
     	<div class="container">
     		<div class="row justify-content-center pb-5">
-          <div class="col-md-10 heading-section text-center ftco-animate">
-          	<h1 class="big big-2">Resume</h1>
-            <h2 class="mb-4">Resume</h2>
-            <!--add cv download link -->
-             <div class="cv-download-wrapper mt-3 mb-5">
+              <div class="col-md-10 heading-section text-center ftco-animate">
+          	    <h1 class="big big-2">Resume</h1>
+                <h2 class="mb-4">Resume</h2>
+                <div class="cv-download-wrapper mt-3 mb-5">
                     <a href="images/Pankaj Kumar-CV.pdf" download class="cv-download-btn">
                         <span class="fa fa-download mr-2"></span> Download  CV
                     </a>
                 </div>
-            <p></p>
+                <p></p>
+              </div>
+            </div>
+
+		    <div class="row">
+			    <div class="col-md-12">
+                    <h2>Education</h2>
+
+                    <div class="resume-wrap">
+                      <span class="date">2021 - 2025</span>
+                      <h3>B.Tech in Electronics & Communication</h3>
+                      <p>NIT Srinagar</p>
+                    </div>
+
+                    <div class="resume-wrap">
+                      <h3>Key Highlights</h3>
+                      <ul>
+                        <li>300+ DSA problems solved (LeetCode)</li>
+                        <li>Built multiple real-world projects</li>
+                        <li>Strong problem-solving mindset</li>
+                      </ul>
+                    </div>
+
+                    <div class="resume-wrap ftco-animate">
+                        <h2>Higher Secondary School</h2>
+                        <span class="position">P.C.P College</span>
+                        <p class="mt-4">Grade: First class distinction.</p>
+                    </div>
+                </div>
+		    </div>
+        </div>
+    </section>
+
+    <section class="ftco-section" id="experience-section">
+      <div class="container">
+        <div class="row justify-content-center pb-5">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+            <h1 class="big big-2">Experience</h1>
+            <h2 class="mb-4">Experience</h2>
+            <p>Even as a fresher, I have focused on practical learning, internships, and building real-world projects.</p>
           </div>
         </div>
 
-		<div class="row">
-			<h1 class="big-4">Fresher</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-		<div class="col-md-6">
-			<div class="resume-wrap ftco-animate">
-				<span class="date">2021-2025(Expected)</span>
-				<h2>Electronic & Communication Engineer</h2>
-			</div>
-		</div>
-
-		<br><br>
-
-		<div class="row">
-			<h1 class="big-4">Education</h1>
-			<div class="underline"></div>
-		</div>
-		<br>
-		
-		<div class="row">
-    		<div class="col-md-6">
-    			<div class="resume-wrap ftco-animate">
-    				<span class="date">2021-2025</span>
-    				<h2>Bachelor of Engineering</h2>
-    				<span class="position">National Institutes of Technology, Srinagar</span>
-    			</div>
-    		</div>
-
-    		<div class="col-md-6">
-    			<div class="resume-wrap ftco-animate">
-    				<h2>Higher Secondary School</h2>
-    				<span class="position">P.C.P College</span>
-    				<p class="mt-4">Grade: First class distinction.</p>
-    			</div>
-			</div>
-    	</div>
+        <div class="resume-wrap">
+          <h2>Experience</h2>
+          <p>Software Developer Intern - Blue stack FinTech </p>
+        </div>
+      </div>
     </section>
-
-
-<!-- Certificates and Badges Section -->
 
 <section class="ftco-section" id="certificate-section">
   <div class="container">
@@ -392,7 +581,6 @@
         <h2 class="mb-4">My Certifications & Badges</h2>
         <p>Below are my certifications, badges and achievements</p>
 
-        <!-- Toggle Buttons -->
         <div class="toggle-buttons mt-4">
           <button class="btn btn-primary active certificate-toggle-btn" id="showCertificates" data-target="certificates">
             Certificates
@@ -404,12 +592,10 @@
       </div>
     </div>
 
-    <!-- Certificates Section -->
     <div class="certificates-content active">
       <div class="swiper-container certificates-swiper">
         <div class="swiper-wrapper">
 
-          <!-- Certificate 1 -->
           <div class="swiper-slide" data-category="web">
             <img src="images/IIT_Guwahati_internship_certifcate_IIT Guwahati.jpg" alt="Research internship at IIT Guwahati Certificate">
             <div class="details">
@@ -420,223 +606,181 @@
             </div>
           </div>
 
-          <!-- Certificate 1 -->
-            <div class="swiper-slide" data-category="web">
-              <img src="images/IIT_Guwahati_internship_certifcate_IIT Guwahati.jpg" alt="Research internship at IIT Guwahati Certificate">
-              <div class="details">
-                <h3>Research Internship</h3>
-                <p>IIT Guwahati from 12 Dec  2023 to 05 feb 2024</p>
-                <p>Skills: Python,OpenCV,Deeplearning</p>
-                <button class="view-btn" data-img="images/IIT_Guwahati_internship_certifcate_IIT Guwahati.jpg">View</button>
-              </div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/Internship Data Science -certificate.jpg" alt="Data Science Certificate">
+            <div class="details">
+              <h3>Data Science Essentials</h3>
+              <p>YBI Foundation - Aprail 2024</p>
+              <p>Skills: Python, Machine Learning</p>
+              <button class="view-btn" data-img="images/Internship Data Science -certificate.jpg">View</button>
             </div>
+          </div>
 
-            <!-- Certificate 2 -->
-            <div class="swiper-slide" data-category="data">
-              <img src="images/Internship Data Science -certificate.jpg" alt="Data Science Certificate">
-              <div class="details">
-                <h3>Data Science Essentials</h3>
-                <p>YBI Foundation - Aprail 2024</p>
-                <p>Skills: Python, Machine Learning</p>
-                <button class="view-btn" data-img="images/Internship Data Science -certificate.jpg">View</button>
-              </div>
+          <div class="swiper-slide" data-category="web">
+            <img src="images/iirs certificate.jpg" alt="Geo processing using python Certificate">
+            <div class="details">
+              <h3>Using Python</h3>
+              <p>IIRS Dehradun - 17 July to 28 July 2023 </p>
+              <p>Skills: Python, Analysis</p>
+              <button class="view-btn" data-img="images/iirs certificate.jpg">View</button>
             </div>
+          </div>
 
-            <!-- Certificate 3 -->
-            <div class="swiper-slide" data-category="web">
-              <img src="images/iirs certificate.jpg" alt="Geo processing using python Certificate">
-              <div class="details">
-                <h3>Using Python</h3>
-                <p>IIRS Dehradun - 17 July to 28 July 2023 </p>
-                <p>Skills: Python, Analysis</p>
-                <button class="view-btn" data-img="images/iirs certificate.jpg">View</button>
-              </div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/INUP by iit kharagpur cerificate.jpg" alt="Indain nano user programme Certificate">
+            <div class="details">
+              <h3>Indain nano user programme</h3>
+              <p>IIT Kharagpur - 8 to 10 feb 2023 </p>
+              <p>Skills: Electronics</p>
+              <button class="view-btn" data-img="images/INUP by iit kharagpur cerificate.jpg">View</button>
             </div>
+          </div>
 
-            <!-- Certificate 4 -->
-            <div class="swiper-slide" data-category="data">
-              <img src="images/INUP by iit kharagpur cerificate.jpg" alt="Indain nano user programme Certificate">
-              <div class="details">
-                <h3>Indain nano user programme</h3>
-                <p>IIT Kharagpur - 8 to 10 feb 2023 </p>
-                <p>Skills: Electronics</p>
-                <button class="view-btn" data-img="images/INUP by iit kharagpur cerificate.jpg">View</button>
-              </div>
+          <div class="swiper-slide" data-category="web">
+            <img src="images/google analytics certificate.jpg" alt="Google Analytics Certificate">
+            <div class="details">
+              <h3>Google Analytics Certificate</h3>
+              <p>Google - 18 may 2024</p>
+              <p>Skills: Google Analytics, Data Analysis, Website Performance</p>
+              <button class="view-btn" data-img="images/google analytics certificate.jpg">View</button>
             </div>
+          </div>
 
-            <!-- Certificate 5 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/google analytics certificate.jpg" alt="Google Analytics Certificate">
-  <div class="details">
-    <h3>Google Analytics Certificate</h3>
-    <p>Google - 18 may 2024</p>
-    <p>Skills: Google Analytics, Data Analysis, Website Performance</p>
-    <button class="view-btn" data-img="images/google analytics certificate.jpg">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/fundamental of digital marketing certificate.jpg" alt="Fundamentals of Digital Marketing Certificate">
+            <div class="details">
+              <h3>Fundamentals of Digital Marketing</h3>
+              <p>Google Digital Garage - 17 March 2024</p>
+              <p>Skills: SEO, SEM, Content Marketing, Analytics</p>
+              <button class="view-btn" data-img="images/fundamental of digital marketing certificate.jpg">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="web">
+            <img src="images/Basic of Data Science_certificate.jpg" alt="What is Data Science? Certificate">
+            <div class="details">
+              <h3>What is Data Science?</h3>
+              <p>Coursera - 23 July 2023</p>
+              <p>Completion Time: 11 hours (approximately)</p>
+              <p>Grade Achieved: 99.33%</p>
+              <p>Status: Verified Account - PANKAJ KUMAR</p>
+              <p>Skills: Data Analysis, Python, Statistics, Machine Learning Basics</p>
+              <button class="view-btn" data-img="images/Basic of Data Science_certificate.jpg">View</button>
+            </div>
+          </div>
 
-            <!-- Certificate 6 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/fundamental of digital marketing certificate.jpg" alt="Fundamentals of Digital Marketing Certificate">
-  <div class="details">
-    <h3>Fundamentals of Digital Marketing</h3>
-    <p>Google Digital Garage - 17 March 2024</p>
-    <p>Skills: SEO, SEM, Content Marketing, Analytics</p>
-    <button class="view-btn" data-img="images/fundamental of digital marketing certificate.jpg">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/TOOLS FOR DATA SCIENCE GAIN SKILL_certificate.jpg" alt="Tools for Data Science Certificate">
+            <div class="details">
+              <h3>Tools for Data Science</h3>
+              <p>IBM via Coursera - 26 August 2023</p>
+              <p>Completion Time: 18 hours (approximately)</p>
+              <p>Grade Achieved: 96.91%</p>
+              <p>Status: Verified Account - PANKAJ KUMAR</p>
+              <p>Skills: Jupyter, RStudio, Git, SQL, Python</p>
+              <button class="view-btn" data-img="images/TOOLS FOR DATA SCIENCE GAIN SKILL_certificate.jpg">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="web">
+            <img src="images/SVRI2021R5874, robotics internship by kodecy space certificate.jpg" alt="Robotics Internship Certificate">
+            <div class="details">
+              <h3>Robotics Internship</h3>
+              <p>Kodecy Space - 17 Feb 2023</p>
+              <p>Skills: Robotics, Embedded Systems, Automation, Mechanical Design</p>
+              <button class="view-btn" data-img="images/SVRI2021R5874, robotics internship by kodecy space certificate.jpg">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="data">
+            <img src="images/collcom certificate of cyber security awarness programme.jpg" alt="Cyber Security Awareness Programme Certificate">
+            <div class="details">
+              <h3>Cyber Security Awareness Programme</h3>
+              <p>CollCom - March 2023</p>
+              <p>Skills: Cyber Security, Network Security, Threat Analysis, Online Safety</p>
+              <button class="view-btn" data-img="images/collcom certificate of cyber security awarness programme.jpg">View</button>
+            </div>
+          </div>
 
-<!-- Certificate 7 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/Basic of Data Science_certificate.jpg" alt="What is Data Science? Certificate">
-  <div class="details">
-    <h3>What is Data Science?</h3>
-    <p>Coursera - 23 July 2023</p>
-    <p>Completion Time: 11 hours (approximately)</p>
-    <p>Grade Achieved: 99.33%</p>
-    <p>Status: Verified Account - PANKAJ KUMAR</p>
-    <p>Skills: Data Analysis, Python, Statistics, Machine Learning Basics</p>
-    <button class="view-btn" data-img="images/Basic of Data Science_certificate.jpg">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="web">
+            <img src="images/Tata Consultancy Services_completion_certificate  tcs certificate.jpg" alt="TCS iON Career Edge - Young Professional Certificate">
+            <div class="details">
+              <h3>TCS iON Career Edge - Young Professional</h3>
+              <p>Tata Consultancy Services - March 2023</p>
+              <p>Skills: Business Etiquette, Communication Skills, Soft Skills, Corporate Readiness</p>
+              <button class="view-btn" data-img="images/Tata Consultancy Services_completion_certificate  tcs certificate.jpg">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="data">
+            <img src="images/jabaaj certificate of data analysis certificate.jpg" alt="Data Analysis Certificate">
+            <div class="details">
+              <h3>Data Analysis Certificate</h3>
+              <p>Jabaaj - Feb 2023</p>
+              <p>Skills: Data Cleaning, Data Visualization, Excel, Python, SQL</p>
+              <button class="view-btn" data-img="images/jabaaj certificate of data analysis certificate.jpg">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="web">
+            <img src="images/C programming certificate.jpg" alt="C Programming Certificate">
+            <div class="details">
+              <h3>C Programming Certificate</h3>
+              <p>Let's upgrade - March 2023</p>
+              <p>Skills: C Programming, Pointers, Memory Management, Data Structures</p>
+              <button class="view-btn" data-img="images/C programming certificate.jpg">View</button>
+            </div>
+          </div>
 
-           <!-- Certificate 8 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/TOOLS FOR DATA SCIENCE GAIN SKILL_certificate.jpg" alt="Tools for Data Science Certificate">
-  <div class="details">
-    <h3>Tools for Data Science</h3>
-    <p>IBM via Coursera - 26 August 2023</p>
-    <p>Completion Time: 18 hours (approximately)</p>
-    <p>Grade Achieved: 96.91%</p>
-    <p>Status: Verified Account - PANKAJ KUMAR</p>
-    <p>Skills: Jupyter, RStudio, Git, SQL, Python</p>
-    <button class="view-btn" data-img="images/TOOLS FOR DATA SCIENCE GAIN SKILL_certificate.jpg">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/cpp certificate.jpeg" alt="C++ Programming Certificate">
+            <div class="details">
+              <h3>C++ Programming Certificate</h3>
+              <p>Let's upgrade - Feb 2023</p>
+              <p>Skills: C++ Programming, OOP, STL, Algorithms, Data Structures</p>
+              <button class="view-btn" data-img="images/cpp certificate.jpeg">View</button>
+            </div>
+          </div>
 
-           <!-- Certificate 9 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/SVRI2021R5874, robotics internship by kodecy space certificate.jpg" alt="Robotics Internship Certificate">
-  <div class="details">
-    <h3>Robotics Internship</h3>
-    <p>Kodecy Space - 17 Feb 2023</p>
-    <p>Skills: Robotics, Embedded Systems, Automation, Mechanical Design</p>
-    <button class="view-btn" data-img="images/SVRI2021R5874, robotics internship by kodecy space certificate.jpg">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="web">
+            <img src="images/Operating_Systems_Basics.jpg" alt="Operating Systems Basics Certificate">
+            <div class="details">
+              <h3>Operating Systems Basics</h3>
+              <p>Issued by: Cisco</p>
+              <p>Skills: Processes, Threads, Memory Management</p>
+              <button class="view-btn" data-img="images/Operating_Systems_Basics.jpg">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="web">
+            <img src="images/Introduction_to_Data_Science.jpg" alt="Introduction to Data Science Certificate">
+            <div class="details">
+              <h3>Introduction to Data Science</h3>
+              <p>Issued by: Cisco</p>
+              <p>Skills: Data Analysis, Statistics, Python</p>
+              <button class="view-btn" data-img="images/Introduction_to_Data_Science.jpg">View</button>
+            </div>
+          </div>
 
-           <!-- Certificate 10 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/collcom certificate of cyber security awarness programme.jpg" alt="Cyber Security Awareness Programme Certificate">
-  <div class="details">
-    <h3>Cyber Security Awareness Programme</h3>
-    <p>CollCom - March 2023</p>
-    <p>Skills: Cyber Security, Network Security, Threat Analysis, Online Safety</p>
-    <button class="view-btn" data-img="images/collcom certificate of cyber security awarness programme.jpg">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="web">
+            <img src="images/python_developer_sololearn.jpg" alt="Python Developer Certificate">
+            <div class="details">
+              <h3>Python Developer</h3>
+              <p>Issued by: SoloLearn</p>
+              <p>Skills: Python, OOP, Scripting</p>
+              <button class="view-btn" data-img="images/python_developer_sololearn.jpg">View</button>
+            </div>
+          </div>
 
-
-  <!-- Certificate 11 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/Tata Consultancy Services_completion_certificate  tcs certificate.jpg" alt="TCS iON Career Edge - Young Professional Certificate">
-  <div class="details">
-    <h3>TCS iON Career Edge - Young Professional</h3>
-    <p>Tata Consultancy Services - March 2023</p>
-    <p>Skills: Business Etiquette, Communication Skills, Soft Skills, Corporate Readiness</p>
-    <button class="view-btn" data-img="images/Tata Consultancy Services_completion_certificate  tcs certificate.jpg">View</button>
-  </div>
-</div>
-
-
-
-            <!-- Certificate 12 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/jabaaj certificate of data analysis certificate.jpg" alt="Data Analysis Certificate">
-  <div class="details">
-    <h3>Data Analysis Certificate</h3>
-    <p>Jabaaj - Feb 2023</p>
-    <p>Skills: Data Cleaning, Data Visualization, Excel, Python, SQL</p>
-    <button class="view-btn" data-img="images/jabaaj certificate of data analysis certificate.jpg">View</button>
-  </div>
-</div>
-
-
-          <!-- Certificate 13 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/C programming certificate.jpg" alt="C Programming Certificate">
-  <div class="details">
-    <h3>C Programming Certificate</h3>
-    <p>Let's upgrade - March 2023</p>
-    <p>Skills: C Programming, Pointers, Memory Management, Data Structures</p>
-    <button class="view-btn" data-img="images/C programming certificate.jpg">View</button>
-  </div>
-</div>
-
-
-       <!-- Certificate 14 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/cpp certificate.jpeg" alt="C++ Programming Certificate">
-  <div class="details">
-    <h3>C++ Programming Certificate</h3>
-    <p>Let's upgrade - Feb 2023</p>
-    <p>Skills: C++ Programming, OOP, STL, Algorithms, Data Structures</p>
-    <button class="view-btn" data-img="images/cpp certificate.jpeg">View</button>
-  </div>
-</div>
-
-<!-- Certificate 16 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/Operating_Systems_Basics.jpg" alt="Operating Systems Basics Certificate">
-  <div class="details">
-    <h3>Operating Systems Basics</h3>
-    <p>Issued by: Cisco</p>
-    <p>Skills: Processes, Threads, Memory Management</p>
-    <button class="view-btn" data-img="images/Operating_Systems_Basics.jpg">View</button>
-  </div>
-</div>
-
-<!-- Certificate 17 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/Introduction_to_Data_Science.jpg" alt="Introduction to Data Science Certificate">
-  <div class="details">
-    <h3>Introduction to Data Science</h3>
-    <p>Issued by: Cisco</p>
-    <p>Skills: Data Analysis, Statistics, Python</p>
-    <button class="view-btn" data-img="images/Introduction_to_Data_Science.jpg">View</button>
-  </div>
-</div>
-
-<!-- Certificate 18 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/python_developer_sololearn.jpg" alt="Python Developer Certificate">
-  <div class="details">
-    <h3>Python Developer</h3>
-    <p>Issued by: SoloLearn</p>
-    <p>Skills: Python, OOP, Scripting</p>
-    <button class="view-btn" data-img="images/python_developer_sololearn.jpg">View</button>
-  </div>
-</div>
-
-
-           <!-- Certificate 15 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/SQL certificate.jpg" alt="SQL Certificate">
-  <div class="details">
-    <h3>SQL Certificate</h3>
-    <p>Let's upgrade - Feb 2023</p>
-    <p>Skills: SQL Queries, Joins, Subqueries, Database Design, Data Manipulation</p>
-    <button class="view-btn" data-img="images/SQL certificate.jpg">View</button>
-  </div>
-</div>
-
-        
+          <div class="swiper-slide" data-category="web">
+            <img src="images/SQL certificate.jpg" alt="SQL Certificate">
+            <div class="details">
+              <h3>SQL Certificate</h3>
+              <p>Let's upgrade - Feb 2023</p>
+              <p>Skills: SQL Queries, Joins, Subqueries, Database Design, Data Manipulation</p>
+              <button class="view-btn" data-img="images/SQL certificate.jpg">View</button>
+            </div>
+          </div>
 
         </div>
         <div class="swiper-pagination"></div>
@@ -645,12 +789,10 @@
       </div>
     </div>
 
-    <!-- Badges Section -->
     <div class="badges-content">
       <div class="swiper-container badges-swiper">
         <div class="swiper-wrapper">
 
-          <!-- Badge 1 -->
           <div class="swiper-slide" data-category="web">
             <img src="images/badges/DCC June 2024.png" alt="Data Competency Challenge Badge">
             <div class="details">
@@ -660,199 +802,144 @@
             </div>
           </div>
 
-          <!-- Badge 1 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/badges/DCC June 2024.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>Issued: June 2024</p>
-    
-    <button class="view-btn" data-img="images/badges/DCC June 2024.png">View</button>
-  </div>
-</div>
-
-
-            <!-- Badge 2 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/DCC July 2024.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>Issued: July 2024</p>
- 
-    <button class="view-btn" data-img="images/badges/DCC July 2024.png">View</button>
-  </div>
-</div>
-
-
-          <!-- Badge 3 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/badges/DCC August 2024.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>Issued: August 2024</p>
-    
-    <button class="view-btn" data-img="images/badges/DCC August 2024.png">View</button>
-  </div>
-</div>
-
-
-           <!-- Badge 4 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/DCC September 2024.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>Issued: September 2024</p>
-   
-    <button class="view-btn" data-img="images/badges/DCC September 2024.png">View</button>
-  </div>
-</div>
-
-
-            <!-- Badge 5 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/badges/DCC October 2024.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>Issued: October 2024</p>
-   
-    <button class="view-btn" data-img="images/badges/DCC October 2024.png">View</button>
-  </div>
-</div>
-
-            <!-- Badge 6 -->
-            <div class="swiper-slide" data-category="data">
-              <img src="images/badges/DCC November 2024.png" alt="Data Competency Challenge Badge">
-              <div class="details">
-                <h3>Data Competency Challenge Badge</h3>
-                <p>Coursera - October 2024</p>
-                
-                <button class="view-btn" data-img="images/badges/DCC November 2024.png">View</button>
-              </div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/DCC July 2024.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge</h3>
+              <p>Issued: July 2024</p>
+              <button class="view-btn" data-img="images/badges/DCC July 2024.png">View</button>
             </div>
+          </div>
 
-            <!-- Badge 7 -->
-            <div class="swiper-slide" data-category="web">
-              <img src="images/badges/DCC December 2024.png" alt="Data Competency Challenge Badge">
-              <div class="details">
-                <h3>Data Competency Challenge Badge</h3>
-                <p>Codecademy - September 2024</p>
-                
-                <button class="view-btn" data-img="images/badges/DCC December 2024.png">View</button>
-              </div>
+          <div class="swiper-slide" data-category="web">
+            <img src="images/badges/DCC August 2024.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge</h3>
+              <p>Issued: August 2024</p>
+              <button class="view-btn" data-img="images/badges/DCC August 2024.png">View</button>
             </div>
+          </div>
 
-            <!-- Badge 8 -->
-            <div class="swiper-slide" data-category="data">
-              <img src="images/badges/DCC January 2025.png" alt="Data Competency Challenge Badge">
-              <div class="details">
-                <h3>Data Competency Challenge Badge</h3>
-                <p>FutureLearn - August 2024</p>
-              
-                <button class="view-btn" data-img="images/badges/DCC January 2025.png">View</button>
-              </div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/DCC September 2024.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge</h3>
+              <p>Issued: September 2024</p>
+              <button class="view-btn" data-img="images/badges/DCC September 2024.png">View</button>
             </div>
+          </div>
 
-<!-- Badge 9 -->
-<div class="swiper-slide" data-category="web">
-  <img src="images/badges/DCC February 2025.png" alt="React Developer Badge">
-  <div class="details">
-    <h3>React Developer</h3>
-    <p>Pluralsight - February 2025</p>
-    
-    <button class="view-btn" data-img="images/badges/DCC February 2025.png">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="web">
+            <img src="images/badges/DCC October 2024.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge</h3>
+              <p>Issued: October 2024</p>
+              <button class="view-btn" data-img="images/badges/DCC October 2024.png">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/DCC November 2024.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge Badge</h3>
+              <p>Coursera - October 2024</p>
+              <button class="view-btn" data-img="images/badges/DCC November 2024.png">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="web">
+            <img src="images/badges/DCC December 2024.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge Badge</h3>
+              <p>Codecademy - September 2024</p>
+              <button class="view-btn" data-img="images/badges/DCC December 2024.png">View</button>
+            </div>
+          </div>
 
-            <!-- Badge 10 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/DCC March 2025.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>LinkedIn Learning - March 2025</p>
-    
-    <button class="view-btn" data-img="images/badges/DCC March 2025.png">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/DCC January 2025.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge Badge</h3>
+              <p>FutureLearn - August 2024</p>
+              <button class="view-btn" data-img="images/badges/DCC January 2025.png">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="web">
+            <img src="images/badges/DCC February 2025.png" alt="React Developer Badge">
+            <div class="details">
+              <h3>React Developer</h3>
+              <p>Pluralsight - February 2025</p>
+              <button class="view-btn" data-img="images/badges/DCC February 2025.png">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/DCC March 2025.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge</h3>
+              <p>LinkedIn Learning - March 2025</p>
+              <button class="view-btn" data-img="images/badges/DCC March 2025.png">View</button>
+            </div>
+          </div>
 
-            <!-- Badge 11 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/DCC April 2025.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>LinkedIn Learning - April 2025</p>
-  
-    <button class="view-btn" data-img="images/badges/DCC April 2025.png">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/DCC April 2025.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge</h3>
+              <p>LinkedIn Learning - April 2025</p>
+              <button class="view-btn" data-img="images/badges/DCC April 2025.png">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/DCC May 2025.png" alt="Data Competency Challenge Badge">
+            <div class="details">
+              <h3>Data Competency Challenge</h3>
+              <p>LinkedIn Learning - May 2025</p>
+              <button class="view-btn" data-img="images/badges/DCC May 2025.png">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/50 days badge 2024.png" alt="LeetCode 50 Days Streak Badge">
+            <div class="details">
+              <h3>LeetCode 50 Days Streak</h3>
+              <p>LeetCode - 2024</p>
+              <p>Achievement: Consistent Daily Practice for 50 Days</p>
+              <button class="view-btn" data-img="images/badges/50 days badge 2024.png">View</button>
+            </div>
+          </div>
 
-           <!-- Badge 12 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/DCC May 2025.png" alt="Data Competency Challenge Badge">
-  <div class="details">
-    <h3>Data Competency Challenge</h3>
-    <p>LinkedIn Learning - May 2025</p>
-   
-    <button class="view-btn" data-img="images/badges/DCC May 2025.png">View</button>
-  </div>
-</div>
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/100 days 2024.png" alt="LeetCode 100 Days Streak Badge">
+            <div class="details">
+              <h3>LeetCode 100 Days Streak</h3>
+              <p>LeetCode - 2024</p>
+              <p>Achievement: Consistent Daily Practice for 100 Days</p>
+              <button class="view-btn" data-img="images/badges/100 days 2024.png">View</button>
+            </div>
+          </div>
 
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/200 days 2024.png" alt="LeetCode 200 Days Streak Badge">
+            <div class="details">
+              <h3>LeetCode 200 Days Streak</h3>
+              <p>LeetCode - 2024</p>
+              <p>Achievement: Consistent Daily Practice for 200 Days</p>
+              <button class="view-btn" data-img="images/badges/200 days 2024.png">View</button>
+            </div>
+          </div>
 
-
-            <!-- Badge 13 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/50 days badge 2024.png" alt="LeetCode 50 Days Streak Badge">
-  <div class="details">
-    <h3>LeetCode 50 Days Streak</h3>
-    <p>LeetCode - 2024</p>
-    <p>Achievement: Consistent Daily Practice for 50 Days</p>
-    <button class="view-btn" data-img="images/badges/50 days badge 2024.png">View</button>
-  </div>
-</div>
-
-
-            <!-- Badge 14 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/100 days 2024.png" alt="LeetCode 100 Days Streak Badge">
-  <div class="details">
-    <h3>LeetCode 100 Days Streak</h3>
-    <p>LeetCode - 2024</p>
-    <p>Achievement: Consistent Daily Practice for 100 Days</p>
-    <button class="view-btn" data-img="images/badges/100 days 2024.png">View</button>
-  </div>
-</div>
-
-
-           <!-- Badge 15 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/200 days 2024.png" alt="LeetCode 200 Days Streak Badge">
-  <div class="details">
-    <h3>LeetCode 200 Days Streak</h3>
-    <p>LeetCode - 2024</p>
-    <p>Achievement: Consistent Daily Practice for 200 Days</p>
-    <button class="view-btn" data-img="images/badges/200 days 2024.png">View</button>
-  </div>
-</div>
-
-
-
-           <!-- Badge 16 -->
-<div class="swiper-slide" data-category="data">
-  <img src="images/badges/365 days badge.png" alt="LeetCode 365 Days Streak Badge">
-  <div class="details">
-    <h3>LeetCode 365 Days Streak</h3>
-    <p>LeetCode - 2024 - 2025</p>
-    <p>Achievement: Consistent Daily Practice for 1 Year</p>
-    <button class="view-btn" data-img="images/badges/365 days badge.png">View</button>
-  </div>
-</div>
-
-          
+          <div class="swiper-slide" data-category="data">
+            <img src="images/badges/365 days badge.png" alt="LeetCode 365 Days Streak Badge">
+            <div class="details">
+              <h3>LeetCode 365 Days Streak</h3>
+              <p>LeetCode - 2024 - 2025</p>
+              <p>Achievement: Consistent Daily Practice for 1 Year</p>
+              <button class="view-btn" data-img="images/badges/365 days badge.png">View</button>
+            </div>
+          </div>
 
         </div>
         <div class="swiper-pagination"></div>
@@ -861,7 +948,6 @@
       </div>
     </div>
 
-    <!-- Modal for Viewing Certificate/Badge -->
     <div class="modal" id="imageModal">
       <button class="close">Close</button>
       <img id="modalImage" src="" alt="Certificate/Badge">
@@ -870,9 +956,6 @@
   </div>
 </section>
 
- <!-- End of Certificates and Badges Section -->
-
- 
     <section class="ftco-section" id="project-section">
       <div class="container">
         <div class="row justify-content-center mb-5 pb-5">
@@ -883,68 +966,122 @@
           </div>
         </div>
         <div class="row d-flex">
+
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <a href="https://github.com/panGIHUB/Under-water-image-enhancement-using-white-balanced-model-with-global-enhancement" class="block-20 zoom-effect" style="background-image: url('images/proj_1.jpg');">
               </a>
               <div class="text mt-3 float-right d-block">
-                <h3 class="heading"><a href="https://github.com/panGIHUB/Under-water-image-enhancement-using-white-balanced-model-with-global-enhancement">Underwater Image Enhancement Using Python,OpenCV</a></h3>
-                <p>Underwater Image Enhancement Using White Balance and Global Enhancement Techniques.</p>
+                <h3 class="heading">
+                  <a href="https://github.com/panGIHUB/Under-water-image-enhancement-using-white-balanced-model-with-global-enhancement">
+                    Underwater Image Enhancement Using Python,OpenCV
+                  </a>
+                </h3>
+                <p>Enhanced underwater images using white balance correction and global enhancement techniques for improved visual clarity and better image quality.</p>
+                <p><strong>Tech Stack:</strong> Python, OpenCV, Image Processing</p>
+                <div class="project-btn-group">
+                  <a href="https://github.com/panGIHUB/Under-water-image-enhancement-using-white-balanced-model-with-global-enhancement" class="btn btn-primary btn-sm">GitHub</a>
+                  <a href="#" class="btn btn-success btn-sm">Live Demo</a>
+                </div>
               </div>
             </div>
           </div>
+
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry justify-content-end">
               <a href="https://github.com/panGIHUB/Currency-exchange" class="block-20 zoom-effect" style="background-image: url('images/proj_2.jpg');">
               </a>
               <div class="text mt-3 float-right d-block">
-                <h3 class="heading"><a href="https://github.com/panGIHUB/Currency-exchange">Global Currency Exchange Using HTML,CSS and JavaScript</a></h3>
-                <p>The Currency Exchange web app provides real-time currency conversion using live exchange rates, with an intuitive interface featuring country flags for easy currency selection.</p>
+                <h3>
+                  <a href="https://github.com/panGIHUB/Currency-exchange">
+                    Currency Exchange Web App
+                  </a>
+                </h3>
+
+                <p>
+                Built a real-time currency converter using JavaScript and APIs.
+                Implemented dynamic UI, country flags, and responsive design.
+                </p>
+
+                <p><strong>Tech Stack:</strong> HTML, CSS, JavaScript, API</p>
+
+                <div class="project-btn-group">
+                  <a href="https://github.com/panGIHUB/Currency-exchange" class="btn btn-primary btn-sm">GitHub</a>
+                  <a href="#" class="btn btn-success btn-sm">Live Demo</a>
+                </div>
               </div>
             </div>
           </div>
+
           <div class="col-md-4 d-flex ftco-animate">
           	<div class="blog-entry">
               <a href="https://github.com/panGIHUB/car_game_pankajpk" class="block-20 zoom-effect" style="background-image: url('images/proj_3.jpg');">
               </a>
               <div class="text mt-3 float-right d-block">
-                <h3 class="heading"><a href="https://github.com/panGIHUB/car_game_pankajpk">PyRacer: A Python-Powered Racing Game</a></h3>
-                <p>An advanced Python racing game featuring realistic physics, dynamic tracks, and customizable vehicles for an immersive racing experience.</p>
+                <h3 class="heading">
+                  <a href="https://github.com/panGIHUB/car_game_pankajpk">
+                    PyRacer: A Python-Powered Racing Game
+                  </a>
+                </h3>
+                <p>Developed an interactive racing game in Python with engaging gameplay, dynamic controls, and immersive user experience.</p>
+                <p><strong>Tech Stack:</strong> Python, Game Logic, UI Design</p>
+                <div class="project-btn-group">
+                  <a href="https://github.com/panGIHUB/car_game_pankajpk" class="btn btn-primary btn-sm">GitHub</a>
+                  <a href="#" class="btn btn-success btn-sm">Live Demo</a>
+                </div>
               </div>
             </div>
           </div>
+
         </div>
 		<br>
 	  </div>
     </section>
 
-	<div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg); position: relative; z-index: 1;">
-    <div class="row justify-content-center">
-        <div class="col-md-7 ftco-animate text-center">
-            <h2>More projects on <span>Github</span></h2>
-            <div class="heading"> 
-                <h4>I love to solve problems and I want to learn something new for free time.</h4>
-                <br>
-                <p>
-                    <a href="https://github.com/panGIHUB" 
-                       target="_blank" 
-                       class="btn btn-primary py-3 px-5" 
-                       style="position: relative; z-index: 999; pointer-events: auto;">
-                       GitHub
-                    </a>
-                </p>
-            </div>
+    <section class="ftco-section github-stats-section" id="github-stats-section">
+      <div class="container">
+        <div class="row justify-content-center pb-5">
+          <div class="col-md-10 heading-section text-center ftco-animate">
+            <h1 class="big big-2">GitHub Stats</h1>
+            <h2 class="mb-4">GitHub Stats</h2>
+            <p>My coding activity and contribution overview from GitHub.</p>
+            <img src="https://github-readme-stats.vercel.app/api?username=panGIHUB&show_icons=true" alt="GitHub Stats">
+          </div>
         </div>
+      </div>
+    </section>
+
+	<div class="ftco-section ftco-hireme img margin-top" style="background-image: url(images/bg_1.jpg); position: relative; z-index: 1;">
+      <div class="row justify-content-center">
+          <div class="col-md-7 ftco-animate text-center">
+              <h2>More projects on <span>Github</span></h2>
+              <div class="heading"> 
+                  <h4>I love to solve problems and I want to learn something new for free time.</h4>
+                  <br>
+                  <p>
+                      <a href="https://github.com/panGIHUB" 
+                         target="_blank" 
+                         class="btn btn-primary py-3 px-5" 
+                         style="position: relative; z-index: 999; pointer-events: auto;">
+                         GitHub
+                      </a>
+                  </p>
+              </div>
+          </div>
+      </div>
     </div>
-</div>
 
     <section class="ftco-section contact-section ftco-no-pb" id="contact-section">
       <div class="container">
       	<div class="row justify-content-center mb-5 pb-3">
           <div class="col-md-7 heading-section text-center ftco-animate">
             <h1 class="big big-2">Contact</h1>
-            <h2 class="mb-4">Contact Me</h2>
-            <p>Below are the details to reach out to me!</p>
+            <h2 class="mb-4">Let's Connect</h2>
+
+            <p>I am open to Software Developer roles and collaboration opportunities.</p>
+
+            <a href="mailto:pankajpk7017kr@gmail.com" class="btn btn-primary">Email Me</a>
+            <a href="https://linkedin.com/in/pankaj-kumar-563304238" class="btn btn-outline-primary">LinkedIn</a>
           </div>
         </div>
 
@@ -958,6 +1095,7 @@
 	            <p>Nalanda(Bihar Sharif), India</p>
 	          </div>
           </div>
+
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
           	<div class="align-self-stretch box p-4 text-center">
           		<div class="icon d-flex align-items-center justify-content-center">
@@ -967,6 +1105,7 @@
 	            <p><a href="tel://+91-8544026713">+91-8544026713</a></p>
 	          </div>
           </div>
+
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
           	<div class="align-self-stretch box p-4 text-center">
           		<div class="icon d-flex align-items-center justify-content-center">
@@ -976,6 +1115,7 @@
 	            <p><a href="mailto:pankajpk7017kr@gmail.com">pankajpk7017kr@gmail.com</a></p>
 	          </div>
           </div>
+
           <div class="col-md-6 col-lg-3 d-flex ftco-animate">
           	<div class="align-self-stretch box p-4 text-center">
           		<div class="icon d-flex align-items-center justify-content-center">
@@ -1009,16 +1149,20 @@
 		<div class="container">
 		  <div class="row">
 			<div class="col-md-12 text-center">
-			  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website made by  <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Pankaj kumar</a>
-	<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+			  <p>
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This website made by <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Pankaj Kumar</a>
+	          </p>
 			</div>
 		  </div>
 		</div>
-	  </footer>
+	</footer>
 
-  <!-- loader -->
-  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+  <div id="ftco-loader" class="show fullscreen">
+    <svg class="circular" width="48px" height="48px">
+      <circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/>
+      <circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/>
+    </svg>
+  </div>
 
   <script src="js/jquery.min.js"></script>
   <script src="js/jquery-migrate-3.0.1.min.js"></script>
@@ -1032,13 +1176,11 @@
   <script src="js/aos.js"></script>
   <script src="js/jquery.animateNumber.min.js"></script>
   <script src="js/scrollax.min.js"></script>
-  
   <script src="js/main.js"></script>
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-        // Initialize Swiper for 3D rotating effect
-        var swiper = new Swiper(".swiper-container", {
+        var certificatesSwiper = new Swiper(".certificates-swiper", {
             effect: "coverflow",
             grabCursor: true,
             centeredSlides: true,
@@ -1051,11 +1193,12 @@
                 slideShadows: false,
             },
             pagination: {
-                el: ".swiper-pagination",
+                el: ".certificates-swiper .swiper-pagination",
+                clickable: true,
             },
             navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
+                nextEl: ".certificates-swiper .swiper-button-next",
+                prevEl: ".certificates-swiper .swiper-button-prev",
             },
             autoplay: {
                 delay: 3000,
@@ -1063,7 +1206,32 @@
             },
         });
 
-        // View button opens modal
+        var badgesSwiper = new Swiper(".badges-swiper", {
+            effect: "coverflow",
+            grabCursor: true,
+            centeredSlides: true,
+            slidesPerView: "auto",
+            coverflowEffect: {
+                rotate: 30,
+                stretch: 0,
+                depth: 300,
+                modifier: 1,
+                slideShadows: false,
+            },
+            pagination: {
+                el: ".badges-swiper .swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".badges-swiper .swiper-button-next",
+                prevEl: ".badges-swiper .swiper-button-prev",
+            },
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+        });
+
         document.querySelectorAll(".view-btn").forEach(button => {
             button.addEventListener("click", function () {
                 let imgSrc = this.getAttribute("data-img");
@@ -1072,18 +1240,49 @@
             });
         });
 
-        // Close modal
         document.querySelector(".close").addEventListener("click", function () {
             document.getElementById("imageModal").style.display = "none";
         });
 
-        // Search function
-        document.getElementById("searchInput").addEventListener("keyup", function () {
-            let query = this.value.toLowerCase();
-            document.querySelectorAll(".swiper-slide").forEach(slide => {
-                let text = slide.innerText.toLowerCase();
-                slide.style.display = text.includes(query) ? "block" : "none";
+        document.getElementById("imageModal").addEventListener("click", function(e) {
+          if (e.target === this) {
+            this.style.display = "none";
+          }
+        });
+
+        const showCertificatesBtn = document.getElementById("showCertificates");
+        const showBadgesBtn = document.getElementById("showBadges");
+        const certificatesContent = document.querySelector(".certificates-content");
+        const badgesContent = document.querySelector(".badges-content");
+
+        showCertificatesBtn.addEventListener("click", function() {
+          certificatesContent.classList.add("active");
+          badgesContent.classList.remove("active");
+          showCertificatesBtn.classList.add("active");
+          showBadgesBtn.classList.remove("active");
+        });
+
+        showBadgesBtn.addEventListener("click", function() {
+          badgesContent.classList.add("active");
+          certificatesContent.classList.remove("active");
+          showBadgesBtn.classList.add("active");
+          showCertificatesBtn.classList.remove("active");
+        });
+
+        const searchInput = document.getElementById("searchInput");
+        if (searchInput) {
+            searchInput.addEventListener("keyup", function () {
+                let query = this.value.toLowerCase();
+                document.querySelectorAll(".swiper-slide").forEach(slide => {
+                    let text = slide.innerText.toLowerCase();
+                    slide.style.display = text.includes(query) ? "block" : "none";
+                });
             });
+        }
+
+        const themeToggle = document.getElementById("theme-toggle");
+        themeToggle.addEventListener("click", function () {
+          document.body.classList.toggle("light-mode");
         });
     });
   </script>
